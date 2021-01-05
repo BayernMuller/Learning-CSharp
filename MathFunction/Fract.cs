@@ -17,6 +17,8 @@ namespace Algebra
 			}
 		}
 
+		public override string ToString() => $"({mNumerator}/{mDenominator})";
+
 		public Fract(Int num, Int den)
 		{
 			mNumerator = num;
@@ -35,7 +37,7 @@ namespace Algebra
 
 		private Int Gcd(Int a, Int b)
 		{
-			if (b == 0)
+			if (b.IsZero)
 				return a;
 			return Gcd(b, a % b);
 		}

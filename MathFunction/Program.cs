@@ -8,7 +8,7 @@ namespace MathFunction
 		static void Main(string[] args)
 		{
 			Fract fract = new Fract(10, 7);
-			Console.WriteLine(fract.Value);
+			Console.WriteLine(fract.ToString());
 		}
 	}
 }
