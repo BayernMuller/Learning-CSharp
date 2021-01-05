@@ -36,12 +36,33 @@ namespace Algebra
 			Simplify();
 		}
 
+		public static Fract operator +(Fract a, Fract b)
+		{
+			a.Equalize(ref b);
+			return new Fract(a.mNumerator + b.mNumerator, a.mDenominator);
+		}
+
+		public static Fract operator -(Fract a, Fract b)
+		{
+			a.Equalize(ref b);
+			return new Fract(a.mNumerator - b.mNumerator, a.mDenominator);
+		}
+
+		public static Fract operator *(Fract a, Fract b)
+		{
+			return new Fract(0, 0);
+		}
+		public static Fract operator /(Fract a, Fract b)
+		{
+			return new Fract(0, 0);
+		}
+
 		private void Equalize(ref Fract fract)
 		{
 			Int ratio = Lcm(fract.mDenominator, mDenominator) / mDenominator;
 			mDenominator *= ratio;
 			mNumerator *= ratio;
-			ratio *= (fract.mDenominator * mDenominator);
+			ratio = (mDenominator / fract.mDenominator);
 			fract.mDenominator *= ratio;
 			fract.mNumerator *= ratio;
 		}
