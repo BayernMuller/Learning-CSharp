@@ -3,24 +3,46 @@
 namespace Algebra
 {
 	using Int = System.Numerics.BigInteger;
+
 	class Fract
 	{
-		private Int numerator;
-		private Int denominator;
+		private Int mNumerator;
+		private Int mDenominator;
 
 		public decimal Value
 		{
 			get
 			{
-				return (decimal)numerator / (decimal)denominator;
+				return (decimal)mNumerator / (decimal)mDenominator;
 			}
 		}
 
 		public Fract(Int num, Int den)
 		{
-			numerator = num;
-			denominator = den;
+			mNumerator = num;
+			mDenominator = den;
 		}
 
+		private void Reduce(ref Fract fract)
+		{
+			Int ratio = Lcm(fract.mDenominator, mDenominator) / mDenominator;
+			mDenominator *= ratio;
+			mNumerator *= ratio;
+			ratio *= fract.mDenominator * mDenominator;
+			fract.mDenominator *= ratio;
+			fract.mNumerator *= ratio;
+		}
+
+		private Int Gcd(Int a, Int b)
+		{
+			if (b == 0)
+				return a;
+			return Gcd(b, a % b);
+		}
+
+		private Int Lcm(Int a, Int b)
+		{
+			return (a * b) / Gcd(a, b);
+		}
 	}
 }
