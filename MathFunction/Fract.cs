@@ -17,7 +17,12 @@ namespace Algebra
 			}
 		}
 
-		public override string ToString() => $"({mNumerator}/{mDenominator})";
+		public override string ToString()
+		{
+			if (mDenominator.IsOne)
+				return $"{mNumerator}";
+			return $"({mNumerator}/{mDenominator})";
+		}
 
 		public Fract(Int num, Int den)
 		{

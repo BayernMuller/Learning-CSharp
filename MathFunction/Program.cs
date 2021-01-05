@@ -7,7 +7,7 @@ namespace MathFunction
 	{
 		static void Main(string[] args)
 		{
-			Fract two_fourths = new Fract(2, 4);
+			Fract two_fourths = new Fract(8, 4);
 			Console.WriteLine(two_fourths);
 		}
 	}
