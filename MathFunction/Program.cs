@@ -7,10 +7,10 @@ namespace MathFunction
 	{
 		static void Main(string[] args)
 		{
-			Fract one_third = new Fract(1, 3);
-			Fract three_fourths = new Fract(3, 4);
+			Fract one_third = new Fract(-1, 3);
+			Fract three_fourths = new Fract(-3, 4);
 
-			Console.WriteLine(one_third + three_fourths);
+			Console.WriteLine(one_third / three_fourths);
 		}
 	}
 }

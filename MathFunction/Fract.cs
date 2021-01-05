@@ -19,7 +19,7 @@ namespace Algebra
 
 		public override string ToString()
 		{
-			if (mDenominator.IsOne)
+			if (mDenominator.IsOne || mNumerator.IsZero)
 				return $"{mNumerator}";
 			return $"({mNumerator}/{mDenominator})";
 		}
@@ -50,11 +50,11 @@ namespace Algebra
 
 		public static Fract operator *(Fract a, Fract b)
 		{
-			return new Fract(0, 0);
+			return new Fract(a.mNumerator * b.mNumerator, a.mDenominator * b.mDenominator);
 		}
 		public static Fract operator /(Fract a, Fract b)
 		{
-			return new Fract(0, 0);
+			return new Fract(a.mNumerator * b.mDenominator, a.mDenominator * b.mNumerator);
 		}
 
 		private void Equalize(ref Fract fract)
@@ -72,7 +72,7 @@ namespace Algebra
 			Int gcd = Gcd(mNumerator, mDenominator);
 			mNumerator /= gcd;
 			mDenominator /= gcd;
-			if (mNumerator < 0 && mDenominator < 0)
+			if (mNumerator < 0 && mDenominator < 0 || mDenominator < 0 && mNumerator > 0)
 			{
 				mNumerator *= -1;
 				mDenominator *= -1;
