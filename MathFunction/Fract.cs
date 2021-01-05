@@ -28,6 +28,7 @@ namespace Algebra
 		{
 			mNumerator = num;
 			mDenominator = den;
+			Simplify();
 		}
 
 		private void Equalize(ref Fract fract)
